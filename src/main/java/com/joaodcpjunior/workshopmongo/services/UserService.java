@@ -2,6 +2,7 @@ package com.joaodcpjunior.workshopmongo.services;
 
 import java.util.List;
 
+import com.joaodcpjunior.workshopmongo.dtos.UserDto;
 import com.joaodcpjunior.workshopmongo.entities.User;
 import com.joaodcpjunior.workshopmongo.repositories.UserRepository;
 import com.joaodcpjunior.workshopmongo.services.exception.ObjectNotFoundException;
@@ -25,5 +26,13 @@ public class UserService {
             throw new ObjectNotFoundException("Objeto não encontrado");
         }
         return user;
+    }
+
+    public User insert(User obj){
+        return repository.insert(obj);
+    }
+
+    public User fromDto(UserDto objDto) {
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 }
