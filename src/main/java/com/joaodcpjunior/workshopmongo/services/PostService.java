@@ -1,5 +1,7 @@
 package com.joaodcpjunior.workshopmongo.services;
 
+import java.util.List;
+
 import com.joaodcpjunior.workshopmongo.entities.Post;
 import com.joaodcpjunior.workshopmongo.repositories.PostRepository;
 import com.joaodcpjunior.workshopmongo.services.exception.ObjectNotFoundException;
@@ -19,5 +21,9 @@ public class PostService {
             throw new ObjectNotFoundException("Objeto não encontrado");
         }
         return post;
+    }
+
+    public List<Post> findByTitle(String text) {
+       return repository.findByTitleContainingIgnoreCase(text);
     }
 }
